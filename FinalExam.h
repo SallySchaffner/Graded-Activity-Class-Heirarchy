@@ -1,6 +1,7 @@
 #ifndef FINALEXAM_H
 #define FINALEXAM_H
 #include "GradedActivity.h"
+#include <string>
 
 class FinalExam : public GradedActivity
 {
@@ -18,9 +19,10 @@ public:
     }
 
     // Constructor
-    FinalExam(int questions, int missed)
+    FinalExam(int questions, int missed, std::string name="Final Exam")
     {
         set(questions, missed);
+        setName(name);
     }
 
     // Mutator functions

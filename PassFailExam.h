@@ -1,5 +1,6 @@
 #ifndef PASSFAILEXAM_H
 #define PASSFAILEXAM_H
+#include <string>
 #include "PassFailActivity.h"
 
 class PassFailExam : public PassFailActivity
@@ -18,10 +19,11 @@ public:
     }
 
     // Constructor
-    PassFailExam(int questions, int missed, double mps) :
+    PassFailExam(int questions, int missed, double mps, std::string name="Pass/Fail Exam") :
         PassFailActivity(mps)
     {
         set(questions, missed);
+        setName(name);
     }
 
     // Mutator function

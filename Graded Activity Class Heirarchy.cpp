@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include <string>
 #include "PassFailExam.h"
 #include "FinalExam.h"
 using namespace std;
@@ -25,7 +26,8 @@ int main()
     // Display the grade data for each element in the array.
     for (int count = 0; count < NUM_TESTS; count++)
     {
-        cout << "Test #" << (count + 1) << ":\n";
+        // cout << "Test #" << (count + 1) << ":\n";
+        cout << "+++ " << tests[count]->getName() << " +++\n";
         displayGrade(tests[count]);
         cout << endl;
     }
