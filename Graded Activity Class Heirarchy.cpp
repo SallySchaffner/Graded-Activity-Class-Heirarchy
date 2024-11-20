@@ -17,10 +17,10 @@ int main()
     // Each element of tests is initialized with the
     // address of a dynamically allocated object.
     GradedActivity* tests[NUM_TESTS] =
-    { new GradedActivity(88.0),
+    { new GradedActivity(88.0, "Chapter 1 Quiz"),
       new FinalExam(100, 25),
-      new GradedActivity(67.0),
-      new PassFailExam(50, 12, 60.0)
+      new GradedActivity(67.0, "Chapter 2 Quiz"),
+      new PassFailExam(50, 12, 60.0, "Practice Quiz")
     };
 
     // Display the grade data for each element in the array.
