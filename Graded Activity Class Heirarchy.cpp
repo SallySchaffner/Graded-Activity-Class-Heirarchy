@@ -1,20 +1,48 @@
-// Graded Activity Class Heirarchy.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include <iomanip>
+#include "PassFailExam.h"
+#include "FinalExam.h"
+using namespace std;
+
+// Function prototype
+void displayGrade(const GradedActivity*);
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    // Constant for the size of an array.
+    const int NUM_TESTS = 4;
+
+    // tests is an array of GradedActivity pointers.
+    // Each element of tests is initialized with the
+    // address of a dynamically allocated object.
+    GradedActivity* tests[NUM_TESTS] =
+    { new GradedActivity(88.0),
+      new FinalExam(100, 25),
+      new GradedActivity(67.0),
+      new PassFailExam(50, 12, 60.0)
+    };
+
+    // Display the grade data for each element in the array.
+    for (int count = 0; count < NUM_TESTS; count++)
+    {
+        cout << "Test #" << (count + 1) << ":\n";
+        displayGrade(tests[count]);
+        cout << endl;
+    }
+    return 0;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+//***************************************************************
+// The displayGrade function displays a GradedActivity object's *
+// numeric score and letter grade. This version of the function *
+// uses a GradedActivity pointer as its parameter.              *
+//***************************************************************
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+void displayGrade(const GradedActivity* activity)
+{
+    cout << setprecision(1) << fixed;
+    cout << "The activity's numeric score is "
+        << activity->getScore() << endl;
+    cout << "The activity's letter grade is "
+        << activity->getLetterGrade() << endl;
+}
