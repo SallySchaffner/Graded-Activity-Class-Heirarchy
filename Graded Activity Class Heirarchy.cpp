@@ -23,12 +23,22 @@ int main()
     grades[2] = new GradedActivity(67.0, "Chapter 2 Quiz");
     grades[3] = new PassFailExam(50, 12, 60.0, "Practice Quiz");
 
-    for (auto activity : grades)
+   cout << "Output with range-based for loop: \n";
+   cout << "----------------------------------\n";
+   for (auto activity : grades)
     {
-        cout << "+++" << activity->getName() << " +++" << endl;
         displayGrade(activity);
         cout << endl;
     }
+
+   cout << "Output with iterator\n";
+   cout << "--------------------\n";
+   vector<GradedActivity*>::iterator it;
+   for (it = grades.begin(); it != grades.end(); ++it) {
+       displayGrade(*it);
+       cout << endl;
+    }
+    std::cout << std::endl;
         
     return 0;
 }
@@ -41,6 +51,7 @@ int main()
 
 void displayGrade(const GradedActivity* activity)
 {
+    cout << "+++" << activity->getName() << " +++" << endl;
     cout << setprecision(1) << fixed;
     cout << "The activity's numeric score is "
         << activity->getScore() << endl;
