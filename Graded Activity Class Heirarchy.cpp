@@ -3,6 +3,7 @@
 #include <string>
 #include "PassFailExam.h"
 #include "FinalExam.h"
+#include <vector>
 using namespace std;
 
 // Function prototype
@@ -13,24 +14,22 @@ int main()
     // Constant for the size of an array.
     const int NUM_TESTS = 4;
 
-    // tests is an array of GradedActivity pointers.
-    // Each element of tests is initialized with the
-    // address of a dynamically allocated object.
-    GradedActivity* tests[NUM_TESTS] =
-    { new GradedActivity(88.0, "Chapter 1 Quiz"),
-      new FinalExam(100, 25),
-      new GradedActivity(67.0, "Chapter 2 Quiz"),
-      new PassFailExam(50, 12, 60.0, "Practice Quiz")
-    };
+    // Create a vector of Graded Activity pointers 
+    vector<GradedActivity*> grades(NUM_TESTS);
 
-    // Display the grade data for each element in the array.
-    for (int count = 0; count < NUM_TESTS; count++)
+    // Store the graded activities in the class
+    grades[0] = new GradedActivity(99.0, "Chapter 1 Quiz");
+    grades[1] = new FinalExam(100, 25);
+    grades[2] = new GradedActivity(67.0, "Chapter 2 Quiz");
+    grades[3] = new PassFailExam(50, 12, 60.0, "Practice Quiz");
+
+    for (auto activity : grades)
     {
-        // cout << "Test #" << (count + 1) << ":\n";
-        cout << "+++ " << tests[count]->getName() << " +++\n";
-        displayGrade(tests[count]);
+        cout << "+++" << activity->getName() << " +++" << endl;
+        displayGrade(activity);
         cout << endl;
     }
+        
     return 0;
 }
 
